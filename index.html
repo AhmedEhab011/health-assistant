@@ -1,0 +1,142 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مساعد الصحة والتركيز</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- رأس الموقع والتنقل -->
+  <header>
+    <nav class="navbar">
+      <span class="logo">💡</span>
+      <ul>
+        <li><a href="#focus" data-i18n="nav_focus">التركيز</a></li>
+        <li><a href="#health" data-i18n="nav_health">الصحة</a></li>
+        <li><a href="#productivity" data-i18n="nav_productivity">الإنتاجية</a></li>
+        <li><a href="#breathing" data-i18n="nav_breathing">التنفس</a></li>
+        <li><a href="#ai" data-i18n="nav_ai">ذكاء اصطناعي</a></li>
+        <li><a href="#rewards" data-i18n="nav_rewards">المكافآت</a></li>
+        <li><a href="#mood" data-i18n="nav_mood">الشعور</a></li>
+      </ul>
+      <div class="lang-theme-switcher">
+        <button id="lang-btn" aria-label="تبديل اللغة">EN</button>
+        <button id="theme-btn" aria-label="تبديل الوضع"><span id="theme-icon">🌙</span></button>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- أقسام الموقع -->
+  <main>
+    <!-- قسم التركيز -->
+    <section id="focus" class="section">
+      <h2 data-i18n="focus_title">مؤقت التركيز</h2>
+      <div class="focus-timer">
+        <div class="timer-circle">
+          <span id="timer-display">25:00</span>
+        </div>
+        <div class="focus-controls">
+          <button id="start-timer" data-i18n="start">ابدأ</button>
+          <button id="pause-timer" data-i18n="pause">إيقاف مؤقت</button>
+          <button id="reset-timer" data-i18n="reset">إعادة</button>
+        </div>
+        <div class="session-settings">
+          <label>
+            <span data-i18n="focus_duration">مدة الجلسة (دقيقة):</span>
+            <input type="number" id="session-minutes" min="5" max="60" value="25">
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الصحة (متابعة الماء والرياضة) -->
+    <section id="health" class="section">
+      <h2 data-i18n="health_title">متابعة الصحة</h2>
+      <form id="health-form">
+        <label>
+          <span data-i18n="water_intake">كمية الماء (مل):</span>
+          <input type="number" id="water" min="0" max="5000" step="100">
+        </label>
+        <label>
+          <span data-i18n="exercise_duration">مدة الرياضة (دقيقة):</span>
+          <input type="number" id="exercise" min="0" max="300" step="5">
+        </label>
+        <button type="submit" data-i18n="add_record">إضافة</button>
+      </form>
+      <table id="health-table">
+        <thead>
+          <tr>
+            <th data-i18n="date">التاريخ</th>
+            <th data-i18n="water">ماء (مل)</th>
+            <th data-i18n="exercise">رياضة (د)</th>
+            <th data-i18n="remove">حذف</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    
+    <!-- قسم الإنتاجية (مهام اليوم) -->
+    <section id="productivity" class="section">
+      <h2 data-i18n="productivity_title">مهام اليوم</h2>
+      <form id="todo-form">
+        <input type="text" id="new-task" data-i18n-placeholder="task_placeholder" placeholder="أضف مهمة جديدة...">
+        <button type="submit" data-i18n="add">إضافة</button>
+      </form>
+      <ul id="todo-list"></ul>
+    </section>
+
+    <!-- قسم تمارين التنفس -->
+    <section id="breathing" class="section">
+      <h2 data-i18n="breathing_title">تمارين التنفس</h2>
+      <div class="breathing-app">
+        <div id="breath-visual"></div>
+        <div id="breath-instructions"></div>
+        <button id="breath-btn" data-i18n="start_breathing">ابدأ التمرين</button>
+      </div>
+    </section>
+
+    <!-- قسم الذكاء الاصطناعي -->
+    <section id="ai" class="section">
+      <h2 data-i18n="ai_title">مساعد الذكاء الاصطناعي</h2>
+      <form id="ai-form">
+        <input type="text" id="ai-input" data-i18n-placeholder="ai_placeholder" placeholder="اكتب سؤالك أو اطلب نصيحة للصحة أو التركيز...">
+        <button type="submit" data-i18n="ask_ai">اسأل الذكاء الاصطناعي</button>
+      </form>
+      <div id="ai-response"></div>
+    </section>
+
+    <!-- نظام المكافآت -->
+    <section id="rewards" class="section">
+      <h2 data-i18n="rewards_title">نظام المكافآت</h2>
+      <div id="points-summary" data-i18n="earned_points">النقاط: 0 🎉</div>
+      <ul id="rewards-list">
+        <li data-i18n="reward_focus">🎁 أكمل جلسة تركيز — 5 نقاط</li>
+        <li data-i18n="reward_tasks">🎁 أنجز جميع المهام اليومية — 10 نقاط</li>
+        <li data-i18n="reward_mood">🎁 تحديث مؤشر شعورك يومياً — 2 نقطة</li>
+      </ul>
+    </section>
+
+    <!-- مؤشرات الشعور -->
+    <section id="mood" class="section">
+      <h2 data-i18n="mood_title">مؤشر الشعور</h2>
+      <div class="mood-indicator">
+        <button class="mood-btn" data-mood="happy" title="سعيد 😊">😊</button>
+        <button class="mood-btn" data-mood="neutral" title="عادي 😐">😐</button>
+        <button class="mood-btn" data-mood="sad" title="حزين 😢">😢</button>
+        <button class="mood-btn" data-mood="stress" title="متوتر 😫">😫</button>
+      </div>
+      <div id="mood-history"></div>
+    </section>
+  </main>
+
+  <!-- تذييل بسيط للموقع -->
+  <footer>
+    <p>&copy; 2025 <span data-i18n="footer_text">مساعد صحي وتركيزي - يدعم العربية والإنجليزية</span></p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
